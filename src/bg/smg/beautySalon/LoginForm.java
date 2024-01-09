@@ -5,13 +5,17 @@
  */
 package beautysalon;
 
-import bg.smg.bankapp_nb.model.User;
-import bg.smg.bankapp_nb.services.UserService;
-import bg.smg.bankapp_nb.services.UserServiceI;
+import bg.smg.beautySalon.model.User;
+import bg.smg.beautySalon.services.UserService;
+import java.awt.Image;
+import java.nio.file.Path;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import bg.smg.beautySalon.services.UserServiceI;
+import java.nio.file.Paths;
+import javax.swing.ImageIcon;
 
 /**
  *
@@ -25,7 +29,13 @@ public class LoginForm extends javax.swing.JFrame {
      */
     public LoginForm() {
         initComponents();
+        Path resourceDirectory = Paths.get("src","resources");
+        String absolutePath = resourceDirectory.toFile().getAbsolutePath();
+        Image imgIcon = new ImageIcon(absolutePath+"/background_img.jpg").getImage();
+        JPanelWithBackground pnl = new JPanelWithBackground(imgIcon);
+        pnl.setBounds(0, 0, 400, 300);
         try {
+            
             userService = new UserService();
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(this,
@@ -59,13 +69,13 @@ public class LoginForm extends javax.swing.JFrame {
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setText("Банково приложение");
+        jLabel2.setText("Beauty salon");
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Вход");
 
-        jLabel4.setText("Потребителско име:");
+        jLabel4.setText("Email:");
 
         jLabel3.setText("Парола:");
 
@@ -116,7 +126,7 @@ public class LoginForm extends javax.swing.JFrame {
                                 .addComponent(jButton1)
                                 .addGap(39, 39, 39)
                                 .addComponent(jButton3)))))
-                .addContainerGap(33, Short.MAX_VALUE))
+                .addContainerGap(39, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -150,10 +160,10 @@ public class LoginForm extends javax.swing.JFrame {
         // TODO add your handling code here:
         //code for DB save of user
          try {
-            String username = jTextField1.getText();
+            String email = jTextField1.getText();
             String password = jPasswordField1.getPassword().toString();
        
-            User user = userService.getUserByUsername(username);
+            User user = userService.getUserByEmail(email);
         
             boolean loginSuccessful = user != null;
             if(loginSuccessful){
