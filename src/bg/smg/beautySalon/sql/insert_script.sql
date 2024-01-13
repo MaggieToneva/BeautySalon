@@ -8,4 +8,16 @@
  * Created: Dec 19, 2023
  */
 
-INSERT INTO `users`(`username`, `password`, `is_active`) VALUES ('user1','cGFzc3dvcmQxMjM0NTY=', 1);
+INSERT INTO `procedure`(`procedureName`, `date`, `price`) VALUES ('подстрижка','2024-01-25-10-00','30');
+INSERT INTO `procedure`(`procedureName`, `date`, `price`) VALUES ('подстрижка','2024-01-25-11-00','30');
+INSERT INTO `procedure`(`procedureName`, `date`, `price`) VALUES ('подстрижка','2024-01-25-12-00','30');
+INSERT INTO `procedure`(`procedureName`, `date`, `price`) VALUES ('подстрижка','2024-01-25-14-00','30');
+INSERT INTO `procedure`(`procedureName`, `date`, `price`) VALUES ('маникюр','2024-01-25-08-00','50');
+INSERT INTO `procedure`(`procedureName`, `date`, `price`) VALUES ('маникюр','2024-01-25-09-00','50');
+INSERT INTO `procedure`(`procedureName`, `date`, `price`) VALUES ('маникюр','2024-01-25-10-00','50');
+INSERT INTO `procedure`(`procedureName`, `date`, `price`) VALUES ('маникюр','2024-01-25-11-00','50');
+INSERT INTO `procedure`(`procedureName`, `date`, `price`) VALUES ('маникюр','2024-01-26-08-00','50');
+INSERT INTO `procedure`(`procedureName`, `date`, `price`) VALUES ('маникюр','2024-01-26-09-00','50');
+INSERT INTO `procedure`(`procedureName`, `date`, `price`) VALUES ('маникюр','2024-01-26-10-00','50');
+INSERT INTO `procedure`(`procedureName`, `date`, `price`) VALUES ('маникюр','2024-01-27-08-00','50');
+INSERT INTO `procedure`(`procedureName`, `date`, `price`) VALUES ('маникюр','2024-01-27-09-00','50');
