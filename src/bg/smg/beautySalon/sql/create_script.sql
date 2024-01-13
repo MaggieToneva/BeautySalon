@@ -1,12 +1,12 @@
 create database `salon`;
 
 create table role(
-    roleID INT AUTO_INCREMENT PRIMARY KEY,
+    ID INT AUTO_INCREMENT PRIMARY KEY,
     roleName varchar(10)
 );
 
 create table user(
-    userID INT AUTO_INCREMENT PRIMARY KEY,
+    ID INT AUTO_INCREMENT PRIMARY KEY,
     name varchar(50),
     email varchar(20),
     password varchar(20),
@@ -16,11 +16,20 @@ create table user(
 );
 
 create table category(
-    categoryID INT AUTO_INCREMENT PRIMARY KEY,
+    ID INT AUTO_INCREMENT PRIMARY KEY,
     categoryName varchar(10)
 );
 
 create table type(
-    typeID INT AUTO_INCREMENT PRIMARY KEY,
+    ID INT AUTO_INCREMENT PRIMARY KEY,
     typeName varchar(10)
+);
+
+create table procedure(
+	ID INT AUTO_INCREMENT PRIMARY KEY,
+	procedureName varchar(20),
+	date TIMESTAMP,
+	price double,
+	userID INT,
+	FOREIGN KEY (userID) REFERENCES user(ID)
 );
