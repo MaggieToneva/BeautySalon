@@ -10,33 +10,30 @@ package bg.smg.beautySalon.model;
  * @author n.m.borisova
  */
 
-import java.sql.Timestamp;
 import java.util.Base64;
 
 public class User {
-    private int userID; 
+    private int ID; 
     private String name;
     private String email;
     private String password;
     private String phoneNumber;
-    private int roleID;
-    
-   
+    private Role role;
 
     public User() {
-        this.name="";
+        this.name = "";
         this.email = "";
-        this.password="";
+        this.password = "";
         this.phoneNumber = "";
-        this.roleID = 0;
+        this.role = new Role();
     }
 
-    public User(String name, String email, String password) {
+    public User(String name, String email, String password, Role role) {
         this.name=name;
         this.email = email;
         this.password=password;
         this.phoneNumber = "";
-        this.roleID = 1;
+        this.role = role;
     }
 
     public String getName() {
@@ -63,12 +60,12 @@ public class User {
         this.phoneNumber = phoneNumber;
     }
 
-    public int getRoleID() {
-        return roleID;
+    public Role getRole() {
+        return role;
     }
 
-    public void setRoleID(int roleID) {
-        this.roleID = roleID;
+    public void setRole(Role role) {
+        this.role= role;
     }
 
     
@@ -82,8 +79,10 @@ public class User {
 
     @Override
     public String toString() {
-        return "User{" + "name=" + name + ", email=" + email + ", password=" + password + ", phoneNumber=" + phoneNumber + ", roleID=" + roleID + '}';
+        return "User{" + "ID=" + ID + ", name=" + name + ", email=" + email + ", password=" + password + ", phoneNumber=" + phoneNumber + ", role=" + role + '}';
     }
+
+    
 }
 
     

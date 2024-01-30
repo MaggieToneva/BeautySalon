@@ -19,5 +19,6 @@ public interface UserServiceI {
     public User getUser(int id);
     public User getUserByEmail(String username) throws SQLException;
     public boolean verifyUser(User user) throws SQLException;
+    public void updateUser(User user) throws Exception;
 }
 

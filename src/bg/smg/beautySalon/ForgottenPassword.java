@@ -3,20 +3,27 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package beautysalon;
-
+package bg.smg.beautySalon;
+import bg.smg.beautySalon.model.User;
+import bg.smg.beautySalon.services.UserService;
+import bg.smg.beautySalon.services.UserServiceI;
+import java.sql.SQLException;
 /**
  *
  * @author n.m.borisova
  */
 public class ForgottenPassword extends javax.swing.JFrame {
-
+    UserServiceI userService;
     /**
      * Creates new form RegistrationForm
      */
     public ForgottenPassword() {
         initComponents();
         setTitle("Банково приложение");
+        try {
+            UserService userService = new UserService();
+        } catch (SQLException ex){
+        }
     }
 
     /**
@@ -58,9 +65,15 @@ public class ForgottenPassword extends javax.swing.JFrame {
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Забравена парола");
 
+        jPasswordField2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jPasswordField2ActionPerformed(evt);
+            }
+        });
+
         jLabel3.setText("Нова парола:");
 
-        jLabel4.setText("Потребителско име:");
+        jLabel4.setText("Имейл:");
 
         jLabel5.setText("Повторете парола:");
 
@@ -137,10 +150,27 @@ public class ForgottenPassword extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         //code for DB save of user
+        
+        String email = jTextField1.getText();
+        String compareWith = jPasswordField1.getText();
+        String password = jPasswordField2.getText();
+        if(password.contentEquals(compareWith));
+        
+        try{
+            User user = userService.getUserByEmail(email);
+            user.setPassword(String.valueOf(jPasswordField1.getPassword()));
+            userService.updateUser(user);
+        }catch(Exception e){
+        }
+        
         this.setVisible(false);
         LoginForm lf = new LoginForm();
         lf.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jPasswordField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jPasswordField2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jPasswordField2ActionPerformed
 
     /**
      * @param args the command line arguments

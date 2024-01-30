@@ -3,7 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package beautysalon;
+package bg.smg.beautySalon;
+
+import bg.smg.beautySalon.LoginForm;
 
 /**
  *
@@ -15,7 +17,7 @@ public class BeautySalon {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
+         (new LoginForm()).setVisible(true);
     }
     
 }

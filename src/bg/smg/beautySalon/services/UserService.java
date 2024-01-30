@@ -33,7 +33,7 @@ public class UserService implements UserServiceI {
             this.connection = dataSource.getConnection();
             try (PreparedStatement statement = connection.prepareStatement(
                     "INSERT INTO `user`(`name`,`email`, `password`) VALUES ('"+user.getName()+"','"+ user.getEmail() +"', '"+user.getPassword()+"')")){
-                statement.setString(1, user.getName());
+               
                 statement.executeQuery();
                 
             }
@@ -49,6 +49,26 @@ public class UserService implements UserServiceI {
     }
 
     @Override
+    public void updateUser(User user) throws Exception{
+        try {
+            this.connection = dataSource.getConnection();
+            try (PreparedStatement statement = connection.prepareStatement(
+                    "UPDATE `user` SET `password`='"+ user.getPassword() +"' WHERE userName = '"+user.getEmail()+ "';")){
+               
+                statement.executeQuery();
+                
+            }
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        } finally {
+            if (connection != null) {
+                System.out.println("Closing database connection...");
+                connection.close();
+                System.out.println("Connection valid: " + connection.isValid(5));
+            }
+        }
+    }
+    @Override
     public User getUser(int id) {
         return null;
     }
@@ -58,7 +78,7 @@ public class UserService implements UserServiceI {
         try {
             this.connection = dataSource.getConnection();
             try (PreparedStatement statement = connection.prepareStatement(
-                    "SELECT * FROM users WHERE email=?")) {
+                    "SELECT * FROM user WHERE email=?")) {
                 statement.setString(1, email);
                 ResultSet resultSet = statement.executeQuery();
                 resultSet.first();

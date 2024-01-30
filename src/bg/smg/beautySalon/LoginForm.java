@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package beautysalon;
+package bg.smg.beautySalon;
 
 import bg.smg.beautySalon.model.User;
 import bg.smg.beautySalon.services.UserService;
